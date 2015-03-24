@@ -1,0 +1,4 @@
+target
+
+# ignore stupic Mac OSX files
+.DS_Store
