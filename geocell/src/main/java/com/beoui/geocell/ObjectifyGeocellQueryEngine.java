@@ -1,4 +1,4 @@
-package com.beoui.geocell;
+package com.wolfapp.db;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
@@ -34,7 +34,7 @@ public class ObjectifyGeocellQueryEngine implements GeocellQueryEngine {
 
 		// add geocells filter
 		String geocellsField = GeocellUtils.getGeocellsFieldName(entityClass);
-		ofyQuery.filter(geocellsField + " in", curGeocellsUnique);
+		ofyQuery = ofyQuery.filter(geocellsField + " in", curGeocellsUnique);
 
 		// add additional filters if base query is not null
 		if (baseQuery != null && baseQuery.getBaseQuery() != null && !baseQuery.getBaseQuery().equals("")) {
@@ -61,7 +61,7 @@ public class ObjectifyGeocellQueryEngine implements GeocellQueryEngine {
 				int indexLastSpace = filter.lastIndexOf(" ");
 				String condition = filter.substring(0, indexLastSpace);
 
-				ofyQuery.filter(condition, params.get(i));
+				ofyQuery = ofyQuery.filter(condition, params.get(i));
 			}
 		}
 
